@@ -33,5 +33,7 @@ urlpatterns = [
     path('mobile/<int:nid>/delete', views.mobile_delete),
     path('mobile/<int:nid>/edit', views.mobile_edit),
 
+     path('admin/list', views.admin_list),
+
     path('login', views.login)
 ]

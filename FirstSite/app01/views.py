@@ -332,3 +332,8 @@ def login(request):
     if form.is_valid():
         pass
     return render(request, "login.html", {"form": form})
+
+
+def admin_list(request):
+    adminList = models.Admin.objects.all()
+    return render(request, "admin_list.html", {"adminList": adminList})
