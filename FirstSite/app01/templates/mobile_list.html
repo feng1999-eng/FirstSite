@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container">
+    <div style="margin-bottom: 10px">
+        <a class="btn btn-primary btn-success" href="/mobile/add">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            新建靓号</a>
+        <div style="float: right;width: 300px">
+            <form>
+         <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for..." name="q" value="{{ query }}">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+            </span>
+            </div>
+                </form>
+        </div>
+    </div>
+<div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+          <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+          靓号列表</div>
+      <!-- Table -->
+      <table class="table table-bordered" >
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>号码</th>
+            <th>价格</th>
+              <th>等级</th>
+              <th>状态</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for item in mobilelist %}
+          <tr>
+            <th scope="row">{{ item.id }}</th>
+            <td>{{ item.mobile }}</td>
+              <td>{{ item.price }}</td>
+              <td>{{ item.get_level_display}}</td>
+              <td>{{ item.get_status_display }}</td>
+            <td>
+                <a class="btn btn-primary btn-xs" href="/mobile/{{ item.id }}/edit">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    编辑</a>
+                <a class="btn btn-danger btn-xs" href="/mobile/{{ item.id }}/delete">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                    删除</a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+</div>
+{% endblock %}

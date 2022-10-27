@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container">
+<form method="post">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">部门名称</label>
+  </div>
+        {% for item in form %}
+        <div class="form-group">
+        <label>{{ item.label }}</label>
+        {{ item }}
+        <span style="color: red">{{ item.errors.0 }}</span>
+        </div>
+      {% endfor %}
+  <button type="submit" class="btn btn-default">添加</button>
+</form>
+</div>
+{% endblock %}
